@@ -41,4 +41,9 @@ public enum EnvironmentType implements IEnum {
 	@Setter 
 	private String desc;
 
+	@Override
+	public String toString() {
+		return value+"."+desc;
+	}
+	
 }

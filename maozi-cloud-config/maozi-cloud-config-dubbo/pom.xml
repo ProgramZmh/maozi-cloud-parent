@@ -67,12 +67,6 @@
 			<artifactId>maozi-cloud-result</artifactId>
 			<version>${maozi-cloud-result.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.maozi</groupId>
-			<artifactId>maozi-cloud-config-bootadmin</artifactId>
-			<version>${maozi-cloud-config-bootadmin.version}</version>
-		</dependency>
 		<!-- Project End -->
 
 

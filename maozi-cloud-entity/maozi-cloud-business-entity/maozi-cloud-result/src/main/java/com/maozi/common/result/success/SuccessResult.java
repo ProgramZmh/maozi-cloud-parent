@@ -21,7 +21,6 @@ import java.io.Serializable;
 
 import com.maozi.common.result.AbstractBaseResult;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,7 +40,7 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ApiModel("接口成功结果集")
+//@ApiModel("接口成功结果集")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper=true)
 public class SuccessResult<D> extends AbstractBaseResult<D> implements Serializable {

@@ -1,13 +1,12 @@
 package com.maozi.tool;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.Resource;
 import lombok.Data;
 
 @Data
@@ -28,7 +27,7 @@ public class ApplicationEnvironmentConfig {
 	}
 	
 	public static String loadConfig;
-	@Value("${spring.cloud.nacos.config.shared-dataids}")
+	@Value("${spring.cloud.nacos.config.shared-configs}")
 	public void setLoadConfig(String loadConfig) {
 		this.loadConfig = loadConfig;
 	}
@@ -49,6 +48,24 @@ public class ApplicationEnvironmentConfig {
 	@Value("${project.environment}")
 	public void setEnvironment(String environment) {
 		this.environment = environment;
+	}
+	
+	public static String title;
+	@Value("${project.title}")
+	public void setTitle(String title) {
+		this.version = title;
+	}
+	
+	public static String version;
+	@Value("${project.version}")
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	
+	public static String details;
+	@Value("${project.details}")
+	public void setDetails(String details) {
+		this.details = details;
 	}
 	
 	public static String dingdingToken;

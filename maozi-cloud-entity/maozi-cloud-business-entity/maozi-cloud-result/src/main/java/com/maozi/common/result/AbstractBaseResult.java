@@ -26,8 +26,7 @@ import com.maozi.common.BaseCommon;
 import com.maozi.common.result.error.ErrorResult;
 import com.maozi.common.result.error.exception.BusinessResultException;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -47,15 +46,15 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@ApiModel("接口结果集")
+//@ApiModel("接口结果集")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class AbstractBaseResult<D> implements Serializable {
 	
-	@ApiModelProperty("数据")
+	@Schema(description = "数据")
 	public abstract D getData();
 	
-	@ApiModelProperty("业务内码")
+	@Schema(description = "业务内码")
 	public abstract Integer getCode();
 	
 	@JsonIgnore

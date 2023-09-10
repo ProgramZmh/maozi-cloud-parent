@@ -21,16 +21,12 @@ package com.maozi.aop;
 import java.util.Arrays;
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.dubbo.rpc.RpcContext;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.csp.sentinel.context.ContextUtil;
@@ -40,6 +36,9 @@ import com.maozi.common.result.AbstractBaseResult;
 import com.maozi.common.result.error.ErrorResult;
 import com.maozi.common.result.error.exception.BusinessResultException;
 import com.maozi.log.LogUtils;
+
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 功能说明：日志收集
@@ -94,18 +93,8 @@ public class AopLog extends BaseCommon {
         
         
         
-        try {
-        	
-        	resultData = (AbstractBaseResult<?>) proceedingJoinPoint.proceed();
-        	
-        }catch (AccessDeniedException e) {
-        
-        	throw e;
-        	
-        }catch (BusinessResultException businessResultException) {
-        	
+        try {resultData = (AbstractBaseResult<?>) proceedingJoinPoint.proceed();}catch (BusinessResultException businessResultException) {
         	resultData = businessResultException.getErrorResult();
-        	
     	}catch (Throwable e) {
 
         	String stackTrace = getStackTrace(e);

@@ -13,7 +13,7 @@
 
 	<properties>
 
-		<parent.revision>1.0.1-SNAPSHOT</parent.revision>
+		<parent.revision>2.0.0-SNAPSHOT</parent.revision>
 
 		<!-- Java Begin -->
 		<java.version>17</java.version>
@@ -25,11 +25,10 @@
 
 
 		<!-- Spring Component Begin -->
-		<spring-boot.version>2.6.11</spring-boot.version>
-		<spring-cloud.version>2021.0.4</spring-cloud.version>
-		<spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
-		<spring-boot-admin-starter.version>2.6.9</spring-boot-admin-starter.version>
-		<spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
+		<spring-boot.version>3.0.2</spring-boot.version>
+		<spring-cloud.version>2022.0.0</spring-cloud.version>
+		<spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
+		<spring-boot-admin-starter.version>3.1.6</spring-boot-admin-starter.version>
 		<!-- Spring Component End -->
 
 
@@ -43,13 +42,14 @@
 		<mybatis.version>3.5.10</mybatis.version>
 		<skywalking.version>8.4.0</skywalking.version>
 		<hutool-all.version>5.6.5</hutool-all.version>
+		<sa-token.version>1.35.0.RC</sa-token.version>
 		<xxl-job-core.version>2.3.0</xxl-job-core.version>
 		<mybatis-plus.version>3.5.3.1</mybatis-plus.version>
 		<mybatis-plus-join.version>1.4.5</mybatis-plus-join.version>
-		<knife4j-annotations.version>3.0.3</knife4j-annotations.version>
+		<knife4j-annotations.version>2.2.8</knife4j-annotations.version>
 		<mybatis-enhance-actable.version>1.5.0.RELEASE</mybatis-enhance-actable.version>
 		<sentinel-apache-dubbo-adapter.version>1.8.5</sentinel-apache-dubbo-adapter.version>
-		<knife4j-openapi2-spring-boot-starter.version>4.0.0</knife4j-openapi2-spring-boot-starter.version>
+		<knife4j-openapi3-jakarta-spring-boot-starter.version>4.3.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
 		<!-- Other Component End -->
 
 
@@ -71,10 +71,10 @@
 		<maozi-cloud-result.version>${parent.revision}</maozi-cloud-result.version>
 
 		<maozi-cloud-config-db.version>${parent.revision}</maozi-cloud-config-db.version>
-		<maozi-cloud-config-sso.version>${parent.revision}</maozi-cloud-config-sso.version>
 		<maozi-cloud-config-job.version>${parent.revision}</maozi-cloud-config-job.version>
 		<maozi-cloud-config-log.version>${parent.revision}</maozi-cloud-config-log.version>
 		<maozi-cloud-config-mvc.version>${parent.revision}</maozi-cloud-config-mvc.version>
+		<maozi-cloud-config-oauth.version>${parent.revision}</maozi-cloud-config-oauth.version>
 		<maozi-cloud-config-redis.version>${parent.revision}</maozi-cloud-config-redis.version>
 		<maozi-cloud-config-dubbo.version>${parent.revision}</maozi-cloud-config-dubbo.version>
 		<maozi-cloud-config-feign.version>${parent.revision}</maozi-cloud-config-feign.version>
@@ -83,9 +83,9 @@
 		<maozi-cloud-config-sentry.version>${parent.revision}</maozi-cloud-config-sentry.version>
 		<maozi-cloud-config-apollo.version>${parent.revision}</maozi-cloud-config-apollo.version>
 		<maozi-cloud-config-stream.version>${parent.revision}</maozi-cloud-config-stream.version>
+		<maozi-cloud-config-monitor.version>${parent.revision}</maozi-cloud-config-monitor.version>
 		<maozi-cloud-config-swagger.version>${parent.revision}</maozi-cloud-config-swagger.version>
 		<maozi-cloud-config-sentinel.version>${parent.revision}</maozi-cloud-config-sentinel.version>
-		<maozi-cloud-config-bootadmin.version>${parent.revision}</maozi-cloud-config-bootadmin.version>
 		<maozi-cloud-config-discovery.version>${parent.revision}</maozi-cloud-config-discovery.version>
 
 
@@ -111,8 +111,8 @@
 
 		<maozi-cloud-sso-oauth-dto.version>${parent.revision}</maozi-cloud-sso-oauth-dto.version>
 		<maozi-cloud-system-user-dto.version>${parent.revision}</maozi-cloud-system-user-dto.version>
-		<maozi-cloud-service-rpc-api-sso-oauth.version>${parent.revision}</maozi-cloud-service-rpc-api-sso-oauth.version>
-		<maozi-cloud-service-rest-api-sso-oauth.version>${parent.revision}</maozi-cloud-service-rest-api-sso-oauth.version>
+		<maozi-cloud-service-rpc-api-system-oauth.version>${parent.revision}</maozi-cloud-service-rpc-api-system-oauth.version>
+		<maozi-cloud-service-rest-api-system-oauth.version>${parent.revision}</maozi-cloud-service-rest-api-system-oauth.version>
 		<maozi-cloud-service-rpc-api-system-config.version>${parent.revision}</maozi-cloud-service-rpc-api-system-config.version>
 		<maozi-cloud-service-rpc-api-system-user-info.version>${parent.revision}</maozi-cloud-service-rpc-api-system-user-info.version>
 		<!-- Project End -->
@@ -173,14 +173,8 @@
 
 		<!-- JAVA EE Begin -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>jsr250-api</artifactId>
-			<version>1.0</version>
+    		<groupId>jakarta.servlet</groupId>
+    		<artifactId>jakarta.servlet-api</artifactId>
 		</dependency>
 		<!-- JAVA EE End -->
 

@@ -19,8 +19,6 @@ package com.maozi.bd.api.impl;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -34,6 +32,8 @@ import com.maozi.common.BaseCommon;
 import com.maozi.common.result.code.CodeAttribute;
 import com.maozi.common.result.error.exception.BusinessResultException;
 import com.maozi.mvc.config.rest.RestTemplate;
+
+import jakarta.annotation.Resource;
 
 /**	
  * 

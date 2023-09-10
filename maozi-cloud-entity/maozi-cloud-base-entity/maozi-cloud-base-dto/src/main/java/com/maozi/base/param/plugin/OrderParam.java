@@ -11,11 +11,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import cn.hutool.core.util.StrUtil;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public interface OrderParam {
 	
-	@ApiModelProperty("排序组件 key:排序字段 value: true降序、false升序、null不做排序、空字段")
+	@Schema(description = "排序组件 key:排序字段 value: true降序、false升序、null不做排序、空字段")
 	Map<String,Boolean> getOrderFieldMap();
 	
 	@JsonIgnore

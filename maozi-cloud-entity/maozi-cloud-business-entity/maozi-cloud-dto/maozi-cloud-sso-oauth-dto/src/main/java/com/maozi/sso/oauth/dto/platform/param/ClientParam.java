@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 import com.maozi.base.AbstractBaseDtomain;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,11 +16,11 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class ClientParam extends AbstractBaseDtomain {
 
-	@ApiModelProperty("客户端ID")
+	@Schema(description = "客户端ID")
 	@NotNull(message = "客户端ID不能为空")
 	private String clientId;
 	
-	@ApiModelProperty("客户端密钥")
+	@Schema(description = "客户端密钥")
 	@NotNull(message = "客户端密钥不能为空")
 	private String clientSecret;
 	

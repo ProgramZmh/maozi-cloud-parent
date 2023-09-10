@@ -55,6 +55,11 @@
 		</dependency>
 		
 		<dependency>
+    		<groupId>org.flywaydb</groupId>
+    		<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.github.yulichang</groupId>
 			<artifactId>mybatis-plus-join</artifactId>
 			<version>${mybatis-plus-join.version}</version>

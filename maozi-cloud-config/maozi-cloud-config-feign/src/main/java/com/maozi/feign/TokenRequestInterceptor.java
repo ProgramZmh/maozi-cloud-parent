@@ -4,12 +4,11 @@ import static com.maozi.common.BaseCommon.getRequest;
 
 import java.util.Enumeration;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Component;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Component
 public class TokenRequestInterceptor implements RequestInterceptor {

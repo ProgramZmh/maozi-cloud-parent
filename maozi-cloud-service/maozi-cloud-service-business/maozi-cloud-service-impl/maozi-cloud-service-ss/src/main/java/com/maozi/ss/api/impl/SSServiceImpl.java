@@ -20,8 +20,6 @@ package com.maozi.ss.api.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -38,6 +36,8 @@ import com.maozi.ss.api.SSService;
 import com.maozi.ss.config.SSConfig;
 import com.maozi.ss.properties.SSProperties;
 import com.maozi.tool.MapperUtils;
+
+import jakarta.annotation.Resource;
 
 /**	
  * 

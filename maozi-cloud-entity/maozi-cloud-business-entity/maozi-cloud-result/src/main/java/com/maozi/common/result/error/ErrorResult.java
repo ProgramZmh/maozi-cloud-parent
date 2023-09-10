@@ -28,8 +28,7 @@ import com.maozi.common.BaseCommon;
 import com.maozi.common.result.AbstractBaseResult;
 import com.maozi.common.result.code.CodeAttribute;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -51,22 +50,22 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ApiModel("接口错误结果集")
+//@ApiModel("接口错误结果集")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class ErrorResult<D> extends AbstractBaseResult<D> implements Serializable {
 	
 	@JsonIgnore
-	@ApiModelProperty("HTTP状态码")
+	@Schema(description = "HTTP状态码")
 	protected Integer httpCode;
 	
-	@ApiModelProperty("错误内码")
+	@Schema(description = "错误内码")
 	private Integer code;
 	
-	@ApiModelProperty("错误信息")
+	@Schema(description = "错误信息")
 	private String message;
 	
-	@ApiModelProperty("错误数据")
+	@Schema(description = "错误数据")
 	private D data;
 
 	public ErrorResult(CodeAttribute<D> codeData) {

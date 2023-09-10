@@ -20,8 +20,6 @@ package com.maozi.wx.api.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -37,6 +35,8 @@ import com.maozi.common.result.error.exception.BusinessResultException;
 import com.maozi.mvc.config.rest.RestTemplate;
 import com.maozi.wx.api.WxService;
 import com.maozi.wx.properties.WxProperties;
+
+import jakarta.annotation.Resource;
 
 /**	
  * 

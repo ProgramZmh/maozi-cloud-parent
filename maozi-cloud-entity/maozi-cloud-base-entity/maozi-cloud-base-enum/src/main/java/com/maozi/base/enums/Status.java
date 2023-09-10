@@ -20,7 +20,7 @@ import lombok.Setter;
 public enum Status implements IEnum {
 	
 	disable(0,"禁用"),enable(1,"启用");
-	
+
 	Status(Integer value,String desc) {
 		
 		this.value = value;

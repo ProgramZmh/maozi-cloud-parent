@@ -58,15 +58,6 @@
 		<!-- SkyWalking End -->
 
 
-
-		<!-- SpringCloud Begin -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-		</dependency>
-		<!-- SpringCloud End -->
-
-
 	</dependencies>
 
 

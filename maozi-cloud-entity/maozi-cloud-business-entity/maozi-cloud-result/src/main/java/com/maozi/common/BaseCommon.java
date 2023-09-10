@@ -29,14 +29,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.Validation;
 import javax.validation.Validator;
 
 import org.apache.commons.lang3.StringUtils;
@@ -49,16 +45,9 @@ import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -75,16 +64,17 @@ import com.maozi.common.result.error.exception.BusinessResultException;
 import com.maozi.common.result.success.SuccessResult;
 import com.maozi.dingding.DingDingMessage;
 import com.maozi.tool.ApplicationEnvironmentConfig;
-import com.maozi.tool.SpringUtil;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.extra.cglib.CglibUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 import net.sf.cglib.core.Converter;
 
 
 @Data
-public class BaseCommon implements Serializable{
+public class BaseCommon implements Serializable {
 
 	public static final String BasicCode = "maozi-cloud-base-code";
 
@@ -93,24 +83,15 @@ public class BaseCommon implements Serializable{
 	public static final Logger log = LoggerFactory.getLogger(BaseCommon.class);
 	
 	public static ThreadLocal<StringBuilder> sql = new ThreadLocal<StringBuilder>();
-	
-	private static Validator validator =  Validation.buildDefaultValidatorFactory().getValidator();
 
 	public static FastDateFormat DETAULT_DATE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
 
 	public static ConcurrentHashMap<String, Map<String, String>> adminHealthError = new ConcurrentHashMap<String, Map<String, String>>();
 
 	
-	
-	public static AsyncRestTemplate asyncRestTemplate;
-	
-	public static DiscoveryClient discoveryClient;
-	
 	public BaseCommon() {
 		
-		this.discoveryClient = SpringUtil.getBean(DiscoveryClient.class);
-		
-		try {this.asyncRestTemplate = SpringUtil.getBean(AsyncRestTemplate.class);}catch (Exception e) {}
+//		validator = Validation.buildDefaultValidatorFactory().getValidator();
 		
 	}
 	
@@ -241,25 +222,8 @@ public class BaseCommon implements Serializable{
 		return isNull(datas) ? Lists.newArrayList() : datas;
 	}
 	
+	//TODO
 	public static void validate(@Valid Object obj){
-    	
-        if (obj instanceof Collection){
-        	
-        	obj = ValidCollectionParam.builder().list((Collection) obj).build();
-            
-        }
-        
-        Map<String, String> errors = Maps.newHashMap();
-        
-        Set<ConstraintViolation<Object>> constraintViolations = validator.validate(obj);
-        
-        for (ConstraintViolation<Object> error : constraintViolations) {
-        	errors.put(error.getPropertyPath().toString(), error.getMessage());
-        }
-        
-        if(collectionIsNotEmpty(constraintViolations)) {
-        	throw new BusinessResultException(new CodeAttribute<Map<String, String>>(400,"参数错误",errors),200);
-        }
         
     }
 	
@@ -429,63 +393,19 @@ public class BaseCommon implements Serializable{
 		return new SuccessResult<T>(attributes);
 	}
 
-	public static String httpDiscoveryServer(String serverName) {
-		List<ServiceInstance> instances = discoveryClient.getInstances(serverName);
-		if (instances.size() > 0) {
-			return instances.get(ThreadLocalRandom.current().nextInt(instances.size())).getUri().toString();
-		}
+	// TODO
+	public static String getCurrentUserName() {
 		return null;
 	}
-
-	public static String rpcDiscoveryServer(String serverName) {
-		List<ServiceInstance> instances = discoveryClient.getInstances(serverName);
-		if (instances.size() <= 0) {
-			return null;
-		}
-		ServiceInstance serviceInstance = instances.get(ThreadLocalRandom.current().nextInt(instances.size()));
-		return "dubbo://" + serviceInstance.getHost() + ":20880";
-	}
-
-	public static String getCurrentUserName() {
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (isNull(authentication) || !authentication.isAuthenticated()) {
-			return "visitor";
-		}
-		
-		return authentication.getName();
-		
+	
+	// TODO
+	public static List<String> getPermissions() {
+		return null;
 	}
 	
-	public static List<String> getPermissions() {
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (isNull(authentication) || !authentication.isAuthenticated()) {
-			throw new BusinessResultException(401,"用户未授权",200);
-		}
-		
-		List<String> permissions = Lists.newArrayList();
-		
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-		authorities.stream().forEach((permission)->{
-			permissions.add(permission.getAuthority());
-		});
-		
-		return permissions;
-		
-	}
-
+	//TODO
 	public static String getCurrentClientId() {
-
-		OAuth2Authentication authentication = (OAuth2Authentication) SecurityContextHolder.getContext().getAuthentication();
-		if (isNull(authentication) || !authentication.isAuthenticated()) {
-			return "visitor";
-		}
-		
-		return authentication.getOAuth2Request().getClientId();
-		
+		return null;
 	}
 
 	public static StringBuilder appendLog(Map<String, String> logs) {
@@ -526,7 +446,7 @@ public class BaseCommon implements Serializable{
         
         HttpEntity<String> formEntity = new HttpEntity<String>(JSONObject.toJSONString(message).toString(), headers);
         
-        asyncRestTemplate.postForEntity("https://oapi.dingtalk.com/robot/send?access_token="+ApplicationEnvironmentConfig.dingdingToken,formEntity,String.class);
+//        asyncRestTemplate.postForEntity("https://oapi.dingtalk.com/robot/send?access_token="+ApplicationEnvironmentConfig.dingdingToken,formEntity,String.class);
         
 	}
 	
@@ -625,8 +545,6 @@ public class BaseCommon implements Serializable{
 		sql.remove();
 		
 		MDC.clear();
-    	
-    	SecurityContextHolder.clearContext();
 		
 	}
 

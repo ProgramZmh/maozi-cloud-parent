@@ -9,11 +9,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>maozi-cloud-config-feign</module>
-        <module>maozi-cloud-config-bootadmin</module>
+        <module>maozi-cloud-config-monitor</module>
         <module>maozi-cloud-config-sentinel</module>
         <module>maozi-cloud-config-db</module>
         <module>maozi-cloud-config-log</module>
-        <module>maozi-cloud-config-sso</module>
+        <module>maozi-cloud-config-oauth</module>
         <module>maozi-cloud-config-mvc</module>
         <module>maozi-cloud-config-seata</module>
         <module>maozi-cloud-config-job</module>

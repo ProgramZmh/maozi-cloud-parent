@@ -3,13 +3,13 @@ package com.maozi.log;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import com.maozi.common.BaseCommon;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Component
 public class LogUtils extends BaseCommon{

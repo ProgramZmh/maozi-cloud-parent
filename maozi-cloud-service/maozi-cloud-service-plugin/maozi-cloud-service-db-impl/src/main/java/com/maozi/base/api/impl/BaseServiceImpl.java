@@ -14,8 +14,6 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.apache.commons.compress.utils.Lists;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.alibaba.nacos.shaded.com.google.common.collect.Sets;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
@@ -500,11 +498,11 @@ public abstract class BaseServiceImpl<M extends IBaseMapper<T>, T extends Abstra
     	
     	collectionIsEmptyThrowError(domains,getAbbreviationModelName()+"列表");
     	
-    	SecurityContext securityContext = SecurityContextHolder.getContext();
+//    	SecurityContext securityContext = SecurityContextHolder.getContext();
     	
     	domains.parallelStream().forEach((domain)->{
     		
-    		SecurityContextHolder.setContext(securityContext);
+//    		SecurityContextHolder.setContext(securityContext);
     		
     		if(isNotNull(domain.getId())) {
         		

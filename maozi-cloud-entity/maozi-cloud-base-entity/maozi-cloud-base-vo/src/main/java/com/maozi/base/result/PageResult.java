@@ -11,7 +11,7 @@ import com.maozi.base.AbstractBaseVomain;
 import com.maozi.base.param.PageParam;
 
 import cn.hutool.extra.cglib.CglibUtil;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,13 +22,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PageResult<D> extends AbstractBaseVomain {
 	
-	@ApiModelProperty(value = "页数",example = "1")
+	@Schema(description = "页数",example = "1")
 	private Long current;
 	
-	@ApiModelProperty(value = "每页数量",example = "10")
+	@Schema(description = "每页数量",example = "10")
 	private Long size;
 
-	@ApiModelProperty(value = "数据总数",hidden = true)
+	@Schema(description = "数据总数",hidden = true)
 	private Long total;
 	
 	@Valid

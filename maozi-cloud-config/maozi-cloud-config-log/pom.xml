@@ -22,8 +22,8 @@
 
 		<dependency>
 			<groupId>com.maozi</groupId>
-			<artifactId>maozi-cloud-config-sso</artifactId>
-			<version>${maozi-cloud-config-sso.version}</version>
+			<artifactId>maozi-cloud-config-oauth</artifactId>
+			<version>${maozi-cloud-config-oauth.version}</version>
 		</dependency>
 		
 		<dependency>

@@ -26,6 +26,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -57,7 +58,7 @@ import lombok.extern.slf4j.Slf4j;
 @DependsOn({"applicationEnvironmentConfig","springUtil"})
 public class BaseApplication {
 
-	protected static void ApplicationRun() {
+	protected static ConfigurableApplicationContext ApplicationRun() {
 		
 		Properties properties = System.getProperties();
 		
@@ -89,14 +90,17 @@ public class BaseApplication {
 		properties.put("spring.main.allow-circular-references",true);
 		properties.put("spring.cloud.nacos.config.file-extension", "yml");
 		properties.put("spring.cloud.nacos.config.server-addr", "${NACOS_CONFIG_SERVER:localhost:8848}");
+		
 	
-			
+		properties.put("logging.file.name", "log/log.log");
 		properties.put("logging.level.root", "ERROR");
 		properties.put("logging.level.com.maozi", "INFO");
 		
 		System.setProperties(properties);
 
 		Long begin = System.currentTimeMillis();
+		
+		ConfigurableApplicationContext context = null;
 
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(BaseApplication.class);
 
@@ -106,7 +110,7 @@ public class BaseApplication {
 
 		try {
 
-			builder.bannerMode(Mode.OFF).run(new String[] {});
+			context = builder.bannerMode(Mode.OFF).run(new String[] {});
 			logs.put("uptime", (System.currentTimeMillis() - begin) + " ms");
 			logs.put("config", ApplicationEnvironmentConfig.loadConfig);
 			logs.put("nacosAddr", ApplicationEnvironmentConfig.nacosAddr + " net");
@@ -138,6 +142,8 @@ public class BaseApplication {
 			BaseCommon.clear();
 
 		}
+		
+		return context;
 
 	}
 

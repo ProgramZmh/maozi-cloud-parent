@@ -16,9 +16,9 @@
 		</dependency>
 		
 		<dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-annotations</artifactId>
-            <version>3.0.3</version>
+            <groupId>io.swagger.core.v3</groupId>
+       	 	<artifactId>swagger-annotations-jakarta</artifactId>
+        	<version>${knife4j-annotations.version}</version>
         </dependency>
 		
   </dependencies>

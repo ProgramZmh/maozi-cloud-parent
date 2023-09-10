@@ -19,7 +19,10 @@ package com.maozi;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
+import com.gitee.sunchenbin.mybatis.actable.manager.handler.StartUpHandler;
 
 /**
  * 
@@ -42,7 +45,11 @@ import org.springframework.context.annotation.ComponentScan;
 public class BaseApplicationDB {
 
 	protected static void ApplicationRun() {
-		BaseApplication.ApplicationRun();
+		
+		ConfigurableApplicationContext context = BaseApplication.ApplicationRun();
+		
+		context.getBean(StartUpHandler.class, new String[] {}).startHandler();
+		
 	}
 
 }

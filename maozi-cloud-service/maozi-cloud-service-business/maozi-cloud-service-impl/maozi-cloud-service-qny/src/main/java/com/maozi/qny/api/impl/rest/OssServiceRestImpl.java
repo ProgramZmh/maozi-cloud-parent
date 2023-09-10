@@ -17,8 +17,6 @@
 
 package com.maozi.qny.api.impl.rest;
 
-import javax.annotation.Resource;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +27,9 @@ import com.maozi.common.result.AbstractBaseResult;
 import com.maozi.qny.properties.QNYProperties;
 import com.qiniu.util.Auth;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
 
 /**	
  * 
@@ -48,13 +47,13 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/oss")	
-@Api(tags = "【全局 】图片管理")
+@Tag(name = "【全局 】图片管理")
 public class OssServiceRestImpl extends BaseCommon{
 	
 	@Resource
 	private QNYProperties qnyProperties;
 
-	@ApiOperation(value = "获取七牛云图片访问token")
+	@Operation(summary = "获取七牛云图片访问token")
 	@GetMapping(value = "/getToken")
 	public AbstractBaseResult<String> getToken(@RequestParam String url) throws Exception{
 		

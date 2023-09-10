@@ -16,26 +16,8 @@
 
 package com.alibaba.cloud.sentinel.custom;
 
-import javax.annotation.PostConstruct;
-
-import com.alibaba.cloud.sentinel.SentinelProperties;
-import com.alibaba.cloud.sentinel.datasource.converter.AuthorityRuleJsonConverter;
-import com.alibaba.cloud.sentinel.datasource.converter.JsonConverter;
-import com.alibaba.cloud.sentinel.datasource.converter.XmlConverter;
-import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
-import com.alibaba.csp.sentinel.config.SentinelConfig;
-import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.AuthorityRuleEntity;
-import com.alibaba.csp.sentinel.init.InitExecutor;
-import com.alibaba.csp.sentinel.log.LogBase;
-import com.alibaba.csp.sentinel.slots.block.authority.AuthorityRule;
-import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
-import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
-import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRule;
-import com.alibaba.csp.sentinel.slots.system.SystemRule;
-import com.alibaba.csp.sentinel.transport.config.TransportConfig;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import static com.alibaba.cloud.sentinel.SentinelConstants.BLOCK_PAGE_URL_CONF_KEY;
+import static com.alibaba.csp.sentinel.config.SentinelConfig.setConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,8 +32,25 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 
-import static com.alibaba.cloud.sentinel.SentinelConstants.BLOCK_PAGE_URL_CONF_KEY;
-import static com.alibaba.csp.sentinel.config.SentinelConfig.setConfig;
+import com.alibaba.cloud.sentinel.SentinelProperties;
+import com.alibaba.cloud.sentinel.datasource.converter.AuthorityRuleJsonConverter;
+import com.alibaba.cloud.sentinel.datasource.converter.JsonConverter;
+import com.alibaba.cloud.sentinel.datasource.converter.XmlConverter;
+import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
+import com.alibaba.csp.sentinel.config.SentinelConfig;
+import com.alibaba.csp.sentinel.init.InitExecutor;
+import com.alibaba.csp.sentinel.log.LogBase;
+import com.alibaba.csp.sentinel.slots.block.authority.AuthorityRule;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRule;
+import com.alibaba.csp.sentinel.slots.system.SystemRule;
+import com.alibaba.csp.sentinel.transport.config.TransportConfig;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import jakarta.annotation.PostConstruct;
 
 /**
  * @author xiaojing

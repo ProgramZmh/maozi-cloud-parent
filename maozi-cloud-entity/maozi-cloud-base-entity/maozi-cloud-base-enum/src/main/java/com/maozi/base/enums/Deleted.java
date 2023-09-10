@@ -36,4 +36,9 @@ public enum Deleted implements IEnum {
 	@Setter
 	private String desc;
 
+	@Override
+	public String toString() {
+		return value+"."+desc;
+	}
+	
 }
