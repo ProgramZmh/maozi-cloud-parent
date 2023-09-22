@@ -95,8 +95,8 @@
 		
 		<dependency>
 			<groupId>com.maozi</groupId>
-			<artifactId>maozi-cloud-service-rpc-api-system-user-info</artifactId>
-			<version>${maozi-cloud-service-rpc-api-system-user-info.version}</version>
+			<artifactId>maozi-cloud-service-rpc-api-system-user</artifactId>
+			<version>${maozi-cloud-service-rpc-api-system-user.version}</version>
 		</dependency>
 		<!-- Project End --> 
 

@@ -12,13 +12,12 @@
 
 	<dependencies>
 		
-		<dependency>
-    		<groupId>cn.dev33</groupId>
-    		<artifactId>sa-token-spring-boot3-starter</artifactId>
-    		<version>${sa-token.version}</version>
-		</dependency>
-		
 		<!-- Project Begin --> 
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+		
 		<dependency>     
 			<groupId>com.maozi</groupId>
 			<artifactId>maozi-cloud-config-dubbo</artifactId>   
@@ -37,6 +36,11 @@
 			<version>${maozi-cloud-service-rest-api-system-oauth.version}</version>  
 		</dependency>
 		<!-- Project End -->
+		
+		<!--<dependency> 
+    		<groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>-->
 
 
 	</dependencies>

@@ -6,6 +6,8 @@ import java.util.concurrent.Future;
 
 import org.slf4j.MDC;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.maozi.common.BaseCommon;
 
@@ -16,7 +18,7 @@ public class IThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
     	
         Map<String, String> mdcContext = MDC.getCopyOfContextMap();
         
-//        SecurityContext securityContext = SecurityContextHolder.getContext();
+        SecurityContext securityContext = SecurityContextHolder.getContext();
         
         super.execute(() -> {
         	
@@ -24,9 +26,9 @@ public class IThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
                 MDC.setContextMap(mdcContext);
             }
             
-//            if(BaseCommon.isNotNull(securityContext)) {
-//            	SecurityContextHolder.setContext(securityContext);
-//            }
+            if(BaseCommon.isNotNull(securityContext)) {
+            	SecurityContextHolder.setContext(securityContext);
+            }
             
             try {task.run();} finally {
             	
@@ -45,7 +47,7 @@ public class IThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
 
     	Map<String, String> mdcContext = MDC.getCopyOfContextMap();
         
-//        SecurityContext securityContext = SecurityContextHolder.getContext();
+        SecurityContext securityContext = SecurityContextHolder.getContext();
         
         return super.submit(() -> {
         	
@@ -53,9 +55,9 @@ public class IThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
                 MDC.setContextMap(mdcContext);
             }
             
-//            if(BaseCommon.isNotNull(securityContext)) {
-//            	SecurityContextHolder.setContext(securityContext);
-//            }
+            if(BaseCommon.isNotNull(securityContext)) {
+            	SecurityContextHolder.setContext(securityContext);
+            }
             
             try {return task.call();} finally {
             	

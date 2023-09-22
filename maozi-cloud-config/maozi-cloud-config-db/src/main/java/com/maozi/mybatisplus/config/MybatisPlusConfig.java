@@ -76,7 +76,7 @@ public class MybatisPlusConfig {
             
             @Override
             public String getTenantIdColumn() {
-            	return "client_id";
+            	return BaseCommon.getCurrentClientId();
             }
             
         }));

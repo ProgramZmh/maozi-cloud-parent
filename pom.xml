@@ -42,7 +42,6 @@
 		<mybatis.version>3.5.10</mybatis.version>
 		<skywalking.version>8.4.0</skywalking.version>
 		<hutool-all.version>5.6.5</hutool-all.version>
-		<sa-token.version>1.35.0.RC</sa-token.version>
 		<xxl-job-core.version>2.3.0</xxl-job-core.version>
 		<mybatis-plus.version>3.5.3.1</mybatis-plus.version>
 		<mybatis-plus-join.version>1.4.5</mybatis-plus-join.version>
@@ -114,7 +113,7 @@
 		<maozi-cloud-service-rpc-api-system-oauth.version>${parent.revision}</maozi-cloud-service-rpc-api-system-oauth.version>
 		<maozi-cloud-service-rest-api-system-oauth.version>${parent.revision}</maozi-cloud-service-rest-api-system-oauth.version>
 		<maozi-cloud-service-rpc-api-system-config.version>${parent.revision}</maozi-cloud-service-rpc-api-system-config.version>
-		<maozi-cloud-service-rpc-api-system-user-info.version>${parent.revision}</maozi-cloud-service-rpc-api-system-user-info.version>
+		<maozi-cloud-service-rpc-api-system-user.version>${parent.revision}</maozi-cloud-service-rpc-api-system-user.version>
 		<!-- Project End -->
 
 

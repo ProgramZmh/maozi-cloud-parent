@@ -19,7 +19,7 @@
  	
  	<modules>
  		<module>maozi-cloud-service-rpc-api-system-oauth</module>
- 		<module>maozi-cloud-service-rpc-api-system-user-info</module>
+ 		<module>maozi-cloud-service-rpc-api-system-user</module>
  		<module>maozi-cloud-service-rpc-api-system-config</module>
  	</modules>
  	
